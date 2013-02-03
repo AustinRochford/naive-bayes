@@ -42,9 +42,9 @@ def parse_prob_file(name):
 	return category_probs, cond_probs
 
 def read(string):
-	l, prob = JSONProtocol.read(string)
+	list_, prob = JSONProtocol.read(string)
 
-	return tuple(l), prob
+	return tuple(list_), prob
 
 if __name__ == "__main__":
 	prob_file = sys.argv[1]
