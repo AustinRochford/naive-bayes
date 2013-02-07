@@ -1,10 +1,31 @@
 import argparse
 import sys
-import random
+from random import randrange
+
+def gambler_generator(max_length):
+    length = randrange(1, max_length + 1)
+    which_coin = randrange(2)
+    
+    if which_coin == 0:
+        flips = map(int_to_flip,[randrange(2) for _ in xrange(length)])
+    else:
+        flips = ['H' for _ in xrange(length)]
+
+    return which_coin, flips
+
+def gambler_generator_arg_types():
+    return [int]
+
+def int_to_flip(n):
+    if n == 0:
+        return 'H'
+    else:
+        return 'T'
+    
 
 def half_even_generator(max_length, upper_bound):
-    length = random.randrange(1, max_length + 1)
-    numbers = [random.randrange(upper_bound) for _ in xrange(length)]
+    length = randrange(1, max_length + 1)
+    numbers = [randrange(upper_bound) for _ in xrange(length)]
 
     if len(filter(lambda n: n % 2 == 0, numbers)) >= (length // 2):
         category = 'T'
