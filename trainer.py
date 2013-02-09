@@ -18,7 +18,7 @@ class NaiveBayes (MRJob):
         total = sum(self.counts.values())
 
         for category, count in self.counts.iteritems():
-            yield ((category, None), float(count) / total)
+            yield ((category, None), count / total)
 
     def category_reducer_init(self):
         self.counts = defaultdict(int)
@@ -32,7 +32,7 @@ class NaiveBayes (MRJob):
         for pair, count in self.feature_counts.iteritems():
             category, _ = pair
 
-            yield (pair, float(count) / self.category_counts[category])
+            yield (pair, count / self.category_counts[category])
 
         for pair in self.category_counts.iteritems():
             yield (None, pair)
