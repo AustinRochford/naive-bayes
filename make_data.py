@@ -7,7 +7,7 @@ def gambler_generator(max_length):
     which_coin = randrange(2)
     
     if which_coin == 0:
-        flips = map(int_to_flip,[randrange(2) for _ in xrange(length)])
+        flips = map(int_to_flip, [randrange(2) for _ in xrange(length)])
     else:
         flips = ['H' for _ in xrange(length)]
 
