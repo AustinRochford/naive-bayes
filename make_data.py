@@ -50,7 +50,7 @@ if __name__ == "__main__":
     args = make_argument_parser().parse_args()
     generator = locals()[args.generator + '_generator']
     generator_arg_types = locals()[args.generator + '_generator_arg_types']()
-    generator_args = [type_(args) for type_, arg in zip(generator_arg_types, args.generator_args.split())]
+    generator_args = [type_(arg) for type_, arg in zip(generator_arg_types, args.generator_args.split())]
 
 
     for i in range(args.num_data):
