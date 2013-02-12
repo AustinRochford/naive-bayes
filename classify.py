@@ -10,6 +10,7 @@ def classify(category_probs, cond_probs, features):
 
     return max(posteriors, key=posteriors.get)
 
+#not the actual posterior, but proportional to it independent of the category
 def compute_posterior(category, category_prob, cond_probs, features):
     return category_prob * reduce(lambda prob, feature: prob * cond_probs[(category,feature)], features, 1)
 
