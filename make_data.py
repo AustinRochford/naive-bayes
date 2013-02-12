@@ -27,7 +27,7 @@ def half_even_generator(max_length, upper_bound):
     length = randrange(1, max_length + 1)
     numbers = [randrange(upper_bound) for _ in xrange(length)]
 
-    if len(filter(lambda n: n % 2 == 0, numbers)) >= (length // 2):
+    if len(filter(lambda n: n % 2 == 0, numbers)) >= length // 2:
         category = 'T'
     else:
         category = 'F'
