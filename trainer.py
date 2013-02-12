@@ -6,7 +6,7 @@ def repeat(x):
     while True:
         yield x
 
-class NaiveBayes (MRJob):
+class NaiveBayes(MRJob):
     def category_reducer(self, key, values):
         if key is not None:
             yield (key, values.next())
