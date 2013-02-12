@@ -3,7 +3,7 @@ import sys
 from mrjob.protocol import JSONProtocol
 
 def classify(category_probs, cond_probs, features):
-    posteriors = {}
+    posteriors = defaultdict(float)
 
     for category in category_probs:
         posteriors[category] = compute_posterior(category, category_probs[category], cond_probs, features)
