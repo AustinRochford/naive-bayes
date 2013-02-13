@@ -1,7 +1,7 @@
 from mrjob.job import MRJob
 
 from collections import Counter, defaultdict
-from itertools import repeat
+from itertools import repeat, izip
 
 class NaiveBayes(MRJob):
     def category_reducer(self, key, values):
@@ -42,7 +42,7 @@ class NaiveBayes(MRJob):
         split_line = line.split()
 
         category = split_line[0]
-        self.counts.update(zip(repeat(category), split_line[1:]))
+        self.counts.update(izip(repeat(category), split_line[1:]))
 
     def mapper_final(self):
         for (category, feature), count in self.counts.iteritems():
