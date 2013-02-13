@@ -1,10 +1,7 @@
 from mrjob.job import MRJob
 
 from collections import Counter, defaultdict
-
-def repeat(x):
-    while True:
-        yield x
+from itertools import repeat
 
 class NaiveBayes(MRJob):
     def category_reducer(self, key, values):
