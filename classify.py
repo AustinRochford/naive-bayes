@@ -1,6 +1,7 @@
 from collections import defaultdict
 import sys
 from mrjob.protocol import JSONProtocol
+from numpy import product
 
 def classify(category_probs, cond_probs, features):
     posteriors = defaultdict(float)
@@ -12,7 +13,7 @@ def classify(category_probs, cond_probs, features):
 
 #not the actual posterior, but proportional to it independent of the category
 def compute_posterior(category, category_prob, cond_probs, features):
-    return category_prob * reduce(lambda prob, feature: prob * cond_probs[(category,feature)], features, 1)
+    return category_prob * product([cond_probs[(category, feature)] for feature in features])
 
 def parse_in_file(name):
     source = open(name, 'r')
